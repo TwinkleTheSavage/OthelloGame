@@ -1,0 +1,33 @@
+--Instructions--
+
+Run GameAccess. 
+--This will open up LobbyUI, it should open up LoginUI, but that's broke so for now we'll make due.
+
+Press Join Game
+--Again, that's not what's supposed to happen, but the networking and playering hasn't happened yet. Anyways, that opens GameUI.
+--You can close GameUI by pressing Return to Lobby, and it only kills GameUI
+
+--To place BLACK pieces, left click END MATCH, and to set WHITE pieces right click END MATCH
+  	--This will change once we implement players of course, it's temporary.
+
+--How shit works--
+
+When you click on a piece, after selecting the color you wish to use, it sends the color to the Game.java class, checking if A. the the piece you clicked on is empty (has a vule of 0) and B.then
+if you CAN place that piece there (Checking if there is a piece next to it that is of the other color and has a piece of your color somewhere after that) returning 1 if everything went well, 
+signaling the UI that you can place a piece there, or 0 if you cannot do the above, and not letting the UI do anything.
+
+This also updates the ARRAY in Game and places the piece you clicked on(from (0,0) to (7,7) as seen in the -LetterNumber-(i.e. D1)ActionPerformed in the GameUI class.
+
+
+
+---!!!!!!!!---SUPER IMPORTANT HOLY CRAP GUYS LIKE SERIOUSLY READ THIS---!!!!!!!!---
+--IMPORTANT--
+Make sure you EMAIL everyone else that you're working on it, so that 2 people aren't doing the same thing at the same time.
+
+--EVEN MORE IMPORTANT--
+When you upload to your part to the Drive (until/if we get something better) Create a FOLDER called OthelloGame followed by the next version number.
+EXAMPLE. I uploaded my in Othello1.0, the next person should make Otherllo2.0
+
+--FIANLLY--
+Whenever you work on someone elses code, create a new project in your workspace, and do not override any old versions you may have. You can name the project the same version as the folder it's in. LIke that if shit hits the fan, we have backups.
+Example. My folder is 1.0, so whoever works on it next should call their project (not src files) Othello1.0 or whatever. Then upload to OthelloGame2.0, where the next person will make their project Othello2.0. Java projects should be one number behind their folder if possible.
