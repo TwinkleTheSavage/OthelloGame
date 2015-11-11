@@ -20,86 +20,84 @@ public class GameRules {
 						if (temparray[row][column] == 1){
 							returnval = 3;
 							flipPieces(i, j, Color.BLACK, 1, 1);				
-							break;
+					
 						}	//Looks right	
 					}		
 				}															
-				else if(j-1 != -1 && temparray[i][j-1] == 2){			
+				if(j-1 != -1 && temparray[i][j-1] == 2){			
 					int row = i;
 					for(int column = j; column > -1; column--){
 						if (temparray[row][column] == 1){
 							returnval = 3;
 							flipPieces(i, j, Color.BLACK, 2, 1);
-							break;
+							
 						}	//Looks left	
 					}							
 				}														//Basically, how this works is it checks each +/- directions to see if there's a piece of another color there.
-				else if(i-1 != -1 && temparray[i-1][j] == 2){			//Each direction also checks if there's a piece of the same color afterwards.
+				if(i-1 != -1 && temparray[i-1][j] == 2){			//Each direction also checks if there's a piece of the same color afterwards.
 					int column = j;										//DO NOT MESS WITH THIS FOR ANY REASON. EEEEVVVVEERRRRRR.
 					for(int row = i; row >-1; row--){					//LIKE SERIOUSLY, I WILL GO UP TO YOU AND STAB YOU IN THE KIDNEY THE Dr.D's GLASSES IF YOU DO.
 						if (temparray[row][column] == 1){				//DON'T FORCE MY HAND.
 							returnval = 3;
 							flipPieces(i, j, Color.BLACK, 3, 1);
-							break;
+							
 						}	//Looks up	
 					}								
 				}											
-				else if(i+1 != 8 && temparray[i+1][j] == 2){			
+				if(i+1 != 8 && temparray[i+1][j] == 2){			
 					int column = j;
 					for(int row = i; row < 8; row++){
 						if (temparray[row][column] == 1){
 							returnval = 3;
 							flipPieces(i, j, Color.BLACK, 4, 1);
-							break;
+							
 						}	//Looks down
 					}
 				}	
 				//DIAGONALS														
-				else if(i-1 != -1 && j-1 != -1 && temparray[i-1][j-1] == 2){			
+				if(i-1 != -1 && j-1 != -1 && temparray[i-1][j-1] == 2){			
 					for(int row = i, column = j; row > -1 && column > -1; row--, column--){				
 							if (temparray[row][column] == 1){
 								System.out.println("up/left");
 								flipPieces(i, j, Color.BLACK, 5, 1);
 								returnval = 3;
-								break;
+								
 							}		//Looks up/left
 						
 					}
 				}
-				else if(i+1 != 8 && j+1 != 8 && temparray[i+1][j+1] == 2){
+				if(i+1 != 8 && j+1 != 8 && temparray[i+1][j+1] == 2){
 					for(int row = i, column = j; row < 8 && column < 8; row++, column++){
 							if (temparray[row][column] == 1){
 								System.out.println("down/right");
 								flipPieces(i, j, Color.BLACK, 6, 1);
 								returnval = 3;
-								break;
+								
 							}		//Looks down/right
 					}
 				}
-				else if(i+1 != 8 && j-1 != -1 && temparray[i+1][j-1] == 2){
+				if(i+1 != 8 && j-1 != -1 && temparray[i+1][j-1] == 2){
 					for(int row = i, column = j; row < 8 && column > -1; row++, column--){
 							if (temparray[row][column] == 1){
 								System.out.println("down/left");
 								flipPieces(i, j, Color.BLACK, 7, 1);
 								returnval = 3;
-								break;
+								
 						}		//Looks down/left
 					}
 				}
-				else if(i-1 != -1 && j+1 != 8 && temparray[i-1][j+1] == 2){
+				if(i-1 != -1 && j+1 != 8 && temparray[i-1][j+1] == 2){
 					for(int row = i, column = j; row > -1 && column < 8; row--, column++){
 							if (temparray[row][column] == 1){
 								System.out.println("up/right");
 								flipPieces(i, j, Color.BLACK, 8, 1);
 								returnval = 3;
-								break;
+								
 						}		//Looks up/right
 					}
 				}
 				
-				else{
-					returnval = 0;
-				}
+			
 		}
 		
 		else if (temp == Color.WHITE){
@@ -110,82 +108,79 @@ public class GameRules {
 						if (temparray[row][column] == 2){
 							returnval = 3;
 							flipPieces(i, j, Color.WHITE, 1, 2);
-							break;
+							
 						}	//Looks right
 					}	
 				}
 				
-				else if(j-1 != -1 && temparray[i][j-1] == 1){
+				if(j-1 != -1 && temparray[i][j-1] == 1){
 					int row = i;
 					for(int column = j; column > -1; column--){
 						if (temparray[row][column] == 2){
 							returnval = 3;
 							flipPieces(i, j, Color.WHITE, 2, 2);
-							break;
+							
 						}	//Looks left	
 					}	
 				}
 				
-				else if(i-1 != -1 && temparray[i-1][j] == 1){
+				if(i-1 != -1 && temparray[i-1][j] == 1){
 					int column = j;							
 					for(int row = i; row >-1; row--){		
 						if (temparray[row][column] == 2){
 							returnval = 3;
 							flipPieces(i, j, Color.WHITE, 3, 2);
-							break;
+							
 						}	//Looks up
 					}	
 				}
-				else if(i+1 != 8 && temparray[i+1][j] == 1){
+				if(i+1 != 8 && temparray[i+1][j] == 1){
 					int column = j;
 					for(int row = i; row < 8; row++){
 						if (temparray[row][column] == 2){
 							returnval = 3;
 							flipPieces(i, j, Color.WHITE, 4, 2);
-							break;
 						}	//Looks down
 					}
 				}
-				else if(i-1 != -1 && j-1 != -1 && temparray[i-1][j-1] == 1){
+				if(i-1 != -1 && j-1 != -1 && temparray[i-1][j-1] == 1){
 					for(int row = i, column = j; row > -1 && column > -1; row--, column--){
 							if (temparray[row][column] == 2){
 								returnval = 3;
 								flipPieces(i, j, Color.WHITE, 5, 2);
-								break;
+								
 						}		//Looks up/left
 					}
 				}
-				else if(i+1 != 8 && j+1 != 8 && temparray[i+1][j+1] == 1){
+				if(i+1 != 8 && j+1 != 8 && temparray[i+1][j+1] == 1){
 					for(int row = i, column = j; row < 8 && column < 8; row++, column++){
 							if (temparray[row][column] == 2){
 								returnval = 3;
 								flipPieces(i, j, Color.WHITE, 6, 2);
-								break;
+								
 						}		//Looks down/right
 					}
 				}
-				else if(i+1 != 8 && j-1 != -1 && temparray[i+1][j-1] == 1){
+				if(i+1 != 8 && j-1 != -1 && temparray[i+1][j-1] == 1){
 					for(int row = i, column = j; row < 8 && column > -1; row++, column--){
 							if (temparray[row][column] == 2){
 								returnval = 3;
 								flipPieces(i, j, Color.WHITE, 7, 2);
-								break;
+								
 						}		//Looks down/left
 					}
 				}
-				else if(i-1 != -1 && j+1 != 8 && temparray[i-1][j+1] == 1){
+				if(i-1 != -1 && j+1 != 8 && temparray[i-1][j+1] == 1){
 					for(int row = i, column = j; row > -1 && column < 8; row--, column++){
 							if (temparray[row][column] == 2){
 								returnval = 3;
 								flipPieces(i, j, Color.WHITE, 8, 2);
-								break;
+								
 						}		//Looks up/right
 					}
 				}
 				
-				else{
-					returnval = 0;
-				}
+				
 		}
 	return returnval;
 	}
