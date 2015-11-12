@@ -34,10 +34,10 @@ public class GameRules {
 						}	//Looks left	
 					}							
 				}														//Basically, how this works is it checks each +/- directions to see if there's a piece of another color there.
-				if(i-1 != -1 && temparray[i-1][j] == 2){			//Each direction also checks if there's a piece of the same color afterwards.
-					int column = j;										//DO NOT MESS WITH THIS FOR ANY REASON. EEEEVVVVEERRRRRR.
-					for(int row = i; row >-1; row--){					//LIKE SERIOUSLY, I WILL GO UP TO YOU AND STAB YOU IN THE KIDNEY THE Dr.D's GLASSES IF YOU DO.
-						if (temparray[row][column] == 1){				//DON'T FORCE MY HAND.
+				if(i-1 != -1 && temparray[i-1][j] == 2){				//Each direction also checks if there's a piece of the same color afterwards.
+					int column = j;										
+					for(int row = i; row >-1; row--){					
+						if (temparray[row][column] == 1){				
 							returnval = 3;
 							flipPieces(i, j, Color.BLACK, 3, 1);
 							
@@ -100,18 +100,17 @@ public class GameRules {
 			
 		}
 		
-		else if (temp == Color.WHITE){
-																				// the && are to make sure search doesn't go out of bound
-				if(j+1 != 8 && temparray[i][j+1] == 2){							//This version checks for adjacent BLACK squares, hence == 1
-					int row = i;
-					for(int column = j; column < 8; column++){
-						if (temparray[row][column] == 2){
-							returnval = 3;
-							flipPieces(i, j, Color.WHITE, 1, 2);
-							
-						}	//Looks right
-					}	
-				}
+		else if (temp == Color.WHITE){											// the && are to make sure search doesn't go out of bound
+			if(j+1 != 8 && temparray[i][j+1] == 2){					 			//This version checks for adjacent BLACK squares, hence == 2					 
+				int row = i;				
+				for(int column = j; column < 8; column++){
+					if (temparray[row][column] == 2){
+						returnval = 3;
+						flipPieces(i, j, Color.WHITE, 1, 2);				
+				
+					}	//Looks right	
+				}		
+			}
 				
 				if(j-1 != -1 && temparray[i][j-1] == 1){
 					int row = i;

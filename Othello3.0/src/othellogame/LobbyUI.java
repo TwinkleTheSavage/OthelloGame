@@ -5,6 +5,12 @@
  */
 package othellogame;
 
+
+
+import java.io.IOException;
+
+
+
 /**
  *
  * @author Shane
@@ -12,14 +18,23 @@ package othellogame;
 public class LobbyUI extends javax.swing.JFrame {
 
 	
-	
+	OthelloClient client;
 	
     /**
      * Creates new form LobbyUI
      */
+	/*
     public LobbyUI() {
         initComponents();
     }
+    */
+    
+    public LobbyUI(String host, int port) 
+	{
+		client= new OthelloClient(host, port, this);
+		initComponents();
+	}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +62,11 @@ public class LobbyUI extends javax.swing.JFrame {
         label1.setText("Current Games Available");
 
         createGameButton.setLabel("CREATE GAME");
+        createGameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	createGameButtonActionPerformed(evt);
+            }
+        });
 
         joinGameButton.setLabel("JOIN GAME");
         joinGameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,12 +117,18 @@ public class LobbyUI extends javax.swing.JFrame {
     
 
     private void joinGameButtonActionPerformed(java.awt.event.ActionEvent evt){
-    	GameUI game = new GameUI();
-    	game.setVisible(true);
-    	Game.setBoardValues();
+    	
+    	String msg = "jg";
+    	client.handleMessageFromClientUI(msg);
     	
     }
     
+    private void createGameButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	
+    	String msg = "cg";
+    	client.handleMessageFromClientUI(msg);
+    	
+    }
     
     
     
@@ -137,9 +163,11 @@ public class LobbyUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LobbyUI().setVisible(true);
+                new LobbyUI("localhost", 5555).setVisible(true);
             }
         });
+        
+        LobbyUI lobby= new LobbyUI("localhost", 5555);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

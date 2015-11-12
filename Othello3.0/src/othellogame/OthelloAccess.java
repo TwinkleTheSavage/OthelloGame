@@ -64,7 +64,7 @@ public class OthelloAccess {
 		}
 
 
-		LobbyUI log = new LobbyUI(); //THIS SHOULD BE LAUNCHING LoginUI BUT IT'S BROKE, SO WE'RE SKIPPING THAT STEP. FOR NOW.
+		LobbyUI log = new LobbyUI("localhost", 5555); //THIS SHOULD BE LAUNCHING LoginUI BUT IT'S BROKE, SO WE'RE SKIPPING THAT STEP. FOR NOW.
 		log.setVisible(true);
 
 

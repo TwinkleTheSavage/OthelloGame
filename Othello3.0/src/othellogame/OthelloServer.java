@@ -4,9 +4,9 @@ package othellogame;
 //"Object Oriented Software Engineering" and is issued under the open-source
 //license found at www.lloseng.com 
 
+import java.awt.Color;
 import java.io.*;
 
-import server.AbstractServer;
 import server.*;
 
 /**
@@ -22,6 +22,7 @@ import server.*;
 public class OthelloServer extends AbstractServer{
 	Game testGame = new Game();
 
+	GameUI game = new GameUI();
     int [][] Board = testGame.board;
 
 	static String storeLogin;			//stores login name for future use.
@@ -69,10 +70,35 @@ public OthelloServer(int port){
 * @param client The connection from which the message originated.
 */
 public void handleMessageFromClient(Object msg, ConnectionToClient client){
+	//juicy feedback
  System.out.println("Message received: " + msg + " from " + client);
- this.sendToAllClients(msg);
+ 
+ if (msg.equals("cg"))
+	 this.createGame();
+ 
+ else
+	 this.joinGame(game);
 }
  
+
+public void createGame(){
+	
+	game.setVisible(true);
+	Game.setBoardValues();
+	//Player player1 = new Player("P1");
+	//player1.playerTurn = true;
+	//player1.setColor(Color.BLACK);
+}
+
+public void joinGame(GameUI game){
+	
+	game.setVisible(true);
+	//Player player2 = new Player("P2");
+	//player2.setColor(Color.WHITE);
+}
+
+
+
 /**
 * This method overrides the one in the superclass.  Called
 * when the server starts listening for connections.
@@ -102,7 +128,7 @@ synchronized protected void clientDisconnected(ConnectionToClient client){	//Met
 }
 
 //This method will update the game board after a player makes a move
-public void updateGameBoard(int[] board){
+public void updateGameBoard(int[][] board){
 
 
 
