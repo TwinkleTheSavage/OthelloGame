@@ -14,9 +14,7 @@ public class Game {
 		board[4][3] = 2;
 		board[4][4] = 1;
 	}
-	
-	
-	
+
 	public static void keepScore(){		//Used to update the game score.
 		int blackPieces = 0;
 		int whitePieces = 0;
@@ -32,15 +30,15 @@ public class Game {
 		}
 		GameUI.scorePass(blackPieces, whitePieces);
 	}
-	
-	
-	
+
 	public static void setPieceFlip(int row, int column, int passColor){
 		board[row][column] = passColor;
 		for (int[] arr : board) {
         System.out.println(Arrays.toString(arr)); //PRINTS OUR ARRAY. USED FOR DEBUGGING.
 		}
+		System.out.println("\n");
 	}
+
 	//Method used to set pieces
 	public static int setPiece(Color col, int i, int j){
 		int returnval = 0;

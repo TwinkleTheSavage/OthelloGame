@@ -28,12 +28,14 @@ public class OthelloAccess {
 			System.exit(1);
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	//MAIN//
 	public static void main(String[] args){
+
+
 		String host = "";
 		int port = 0;
 		
@@ -44,16 +46,30 @@ public class OthelloAccess {
 			host = "localhost";
 		}
 
-
 		try {
 			port = Integer.parseInt(args[1]);
 		}
 		catch(ArrayIndexOutOfBoundsException e){
 			port = DEFAULT_PORT;
 		}
-		
-		
+
+		OthelloClient chat= null;
+		try {
+			chat = new OthelloClient(host, port);
+		} catch (IOException e) {
+			//e.printStackTrace();
+			System.out.println("Error: Can't setup connection!"
+					+ " Terminating client.");
+			System.exit(1);
+		}
+
+
 		LobbyUI log = new LobbyUI(); //THIS SHOULD BE LAUNCHING LoginUI BUT IT'S BROKE, SO WE'RE SKIPPING THAT STEP. FOR NOW.
 		log.setVisible(true);
+
+
+
 	}
+
+
 }

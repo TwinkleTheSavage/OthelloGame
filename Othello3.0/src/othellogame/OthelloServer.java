@@ -20,7 +20,10 @@ import server.*;
 * @version July 2000
 */
 public class OthelloServer extends AbstractServer{
-	
+	Game testGame = new Game();
+
+    int [][] Board = testGame.board;
+
 	static String storeLogin;			//stores login name for future use.
 	static String storePass;			//stores password for future use
 	  public static void loginPass(String login) throws IOException{
@@ -98,6 +101,12 @@ synchronized protected void clientDisconnected(ConnectionToClient client){	//Met
 	  System.out.println("A client has disconnected.");		//Called when a client disconnects.
 }
 
+//This method will update the game board after a player makes a move
+public void updateGameBoard(int[] board){
+
+
+
+    }
 
 /**
 * This method is responsible for the creation of 

@@ -15,5 +15,30 @@ public class OthelloClient extends AbstractClient{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	//accepts input from the console
+	public void accept()
+	{
+		try
+		{
+			BufferedReader fromConsole =
+					new BufferedReader(new InputStreamReader(System.in));
+			String message;
+
+			while (true)
+			{
+				message = fromConsole.readLine();
+				//processmessage(message);
+			}
+		}
+		catch (Exception ex)
+		{
+			System.out.println
+					("Unexpected error while reading from console!");
+		}
+
+
+	}
+
+
 }
