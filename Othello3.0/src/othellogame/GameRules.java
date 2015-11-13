@@ -101,7 +101,7 @@ public class GameRules {
 		}
 		
 		else if (temp == Color.WHITE){											// the && are to make sure search doesn't go out of bound
-			if(j+1 != 8 && temparray[i][j+1] == 2){					 			//This version checks for adjacent BLACK squares, hence == 2					 
+			if(j+1 != 8 && temparray[i][j+1] == 1){					 			//This version checks for adjacent BLACK squares, hence == 2					 
 				int row = i;				
 				for(int column = j; column < 8; column++){
 					if (temparray[row][column] == 2){

@@ -134,14 +134,10 @@ public class GameUI extends javax.swing.JFrame{
         //ACTION LISTENERS FOR ALL THE BUTTONS. PLEASE KILL ME THIS IS LONG. LIKE, SERIOUSLY, THIS IS REALL LONG, WHY CAN'T IT BE SHORT
         //WOULD SUGGEST TO ENABLE FOLDING. Preference -> Java -> Editors -> Folding
        
-        //Also this is used for setting the color of the tile.
-        endMatchButton.addMouseListener(new CustomMouseListener());
-        endMatchButton.addMouseListener(new CustomMouseListener2());
-        //THIS IS DEBUGGING AND IMPLEMENTATION ONLY. D4 WILL NOT BE USED IN THE GAME, IT'S A STARTING TILE
-        //LEFT CLICK "END MATCH TO SET YOUR COLOR TO BLACK, AND RIGHT CLICK IT TO SET YOU COLOR TO WHITE.
+       
         
         
-        
+   
 
 		A1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1406,40 +1402,4 @@ public class GameUI extends javax.swing.JFrame{
     private static javax.swing.JTextField whiteScore;
     // End of variables declaration//GEN-END:variables
   
-}
-
-//THIS WILL BE REMOVED ONCE PLAYERS ARE IMPLEMENTED. DEBUGGING PURPOSES ONLY. ALSO CATS ARE BETTER THAN DOGS.
-//THIS IS JUST TO SELECT THE COLOR OF THE PIECE YOU WANT TO PLACE.
-//D4 is BLACK and D5 is WHITE
-class CustomMouseListener implements MouseListener{
-    public void mouseClicked(MouseEvent e) {
-    	if (SwingUtilities.isLeftMouseButton(e)){
-    		GameUI.spectrum =Color.BLACK;
-    	}
-    }
-
-    public void mousePressed(MouseEvent e) {
-    }
-    public void mouseReleased(MouseEvent e) {
-    }
-    public void mouseEntered(MouseEvent e) {
-    }
-    public void mouseExited(MouseEvent e) {
-    }
-}
-class CustomMouseListener2 implements MouseListener{
-    public void mouseClicked(MouseEvent e) {
-    	if (SwingUtilities.isRightMouseButton(e)){
-   	 		GameUI.spectrum =Color.WHITE;
-   	 	}
-    }
-
-    public void mousePressed(MouseEvent e) {
-    }
-    public void mouseReleased(MouseEvent e) {
-    }
-    public void mouseEntered(MouseEvent e) {
-    }
-    public void mouseExited(MouseEvent e) {
-    }
 }
