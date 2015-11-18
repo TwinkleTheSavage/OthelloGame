@@ -251,8 +251,7 @@ public class GameRules {
 					if (Game.board[row][column] == colorNum) break;
 					else{
 						GameUI.setColor(row, column, color);
-						Game.setPieceFlip(row, column, colorNum);
-						
+						Game.setPieceFlip(row, column, colorNum);	
 					}
 			}	
 		}
@@ -261,15 +260,24 @@ public class GameRules {
 					if (Game.board[row][column] == colorNum) break;
 					else{
 						GameUI.setColor(row, column, color);
-						Game.setPieceFlip(row, column, colorNum);
-						
+						Game.setPieceFlip(row, column, colorNum);	
 					}
 			}	
-		}
-		
-		
-		
-		
+		}	
 	}
+	
+	
+	
+	public static void possibleMoves(Color color){
+		Color colPass = color;
+		for(int col=0; col<8; col++){
+		   for(int row=0; row<8; row++){
+		      if (Game.setPiece(colPass, row, col) == true){
+		    	  GameUI.setColor(row, col, Color.GREEN);
+		      }
+		   }
+		}
+	}
+	
 	
 }

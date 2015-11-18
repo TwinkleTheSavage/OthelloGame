@@ -21,11 +21,13 @@ public class Player {
 			isTurn = true;
 			player1Turn = false;
 			player2Turn = true;
+			//GameRules.possibleMoves(color);
 		}
 		else if (color == Color.WHITE&& player2Turn == true){
 			isTurn = true;
 			player1Turn = true;
 			player2Turn = false;
+			//GameRules.possibleMoves(color);
 		}
 		return isTurn;
 	}

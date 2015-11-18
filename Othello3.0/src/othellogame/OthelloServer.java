@@ -82,8 +82,8 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  
 
 public void createGame(){
-	
-	game.setVisible(true);
+	GameUI game = new GameUI(); // I ADDED THIS TO CREATE A NEW WINDOW SINCE IT WOULD JUST OPEN THE OLD GAME WITH THE COLORS (but not values) FILLED IN. COOLBEANS RIGHT?
+	game.setVisible(true);		
 	Game.setBoardValues();
 	//Player player1 = new Player("P1");
 	//player1.playerTurn = true;

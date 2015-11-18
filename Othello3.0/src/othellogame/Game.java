@@ -8,7 +8,13 @@ public class Game {
 	int black = 1;
 	int white = 2;
 	static int [][] board = new int [8][8];
+	
 	public static void setBoardValues(){ //THIS IS CALLED TO INITUALIZE THE BOARD. HAS TO BE CALLED WHEN GAME LAUNCHED
+		for (int i = 0; i<board.length; i++){
+		     for (int j = 0; j<board[i].length; j++){
+		    	  board[i][j] = 0;
+		     }
+		}
 		board[3][3] = 1;
 		board[3][4] = 2;
 		board[4][3] = 2;
@@ -30,6 +36,20 @@ public class Game {
 		}
 		GameUI.scorePass(blackPieces, whitePieces);
 	}
+	
+	public static void updateColors(){					//method to update game board
+		for (int i = 0; i<board.length; i++){
+		     for (int j = 0; j<board[i].length; j++){
+		    	 if (board[i][j] == 1){
+		    		 GameUI.setColor(i, j, Color.BLACK);
+		    	 }
+		    	 else if(board[i][j] == 2){
+		    		 GameUI.setColor(i, j, Color.WHITE);
+		    	 }
+		     }
+		}
+	}
+	
 
 	public static void setPieceFlip(int row, int column, int passColor){
 		board[row][column] = passColor;
@@ -40,36 +60,36 @@ public class Game {
 	}
 
 	//Method used to set pieces
-	public static int setPiece(Color col, int i, int j){
-		int returnval = 0;
+	public static boolean setPiece(Color col, int i, int j){
+		boolean returnval = false;
 		Color storeCol = col;
 		if (storeCol == Color.BLACK){
 			
 			if (board[i][j] == 1){		//checks if there is already a piece in the spot. Ain't that fancy.
-				returnval = 0;
+				returnval = false;
 			}
 			else if (board[i][j] == 2){
-				returnval = 0;
+				returnval = false;
 			}
 			else{
 				if(GameRules.canMove(board, i, j, storeCol) ==  3){// GAMERULE METHOD TO CHECK IF PLACE IS POSSIBLE
 					board[i][j] = 1;
-					returnval = 1;
+					returnval = true;
 				}
 			}
 		}
 		else if (storeCol == Color.WHITE){
 			
 			if (board[i][j] == 1){
-				returnval = 0;
+				returnval = false;
 			}
 			else if (board[i][j] == 2){
-				returnval = 0;
+				returnval = false;
 			}
 			else{
 				if(GameRules.canMove(board, i, j, storeCol) == 3){// GAMERULE METHOD TO CHECK IF PLACE IS POSSIBLE
 					board[i][j] = 2;
-					returnval = 1;
+					returnval = true;
 				}
 			}
 		}
