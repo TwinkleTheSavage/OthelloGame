@@ -25,10 +25,10 @@ public class OthelloServer extends AbstractServer{
 	GameUI game = new GameUI();
     int [][] Board = testGame.board;
 
-	static String storeLogin;			//stores login name for future use.
+	static String name;			//stores login name for future use.
 	static String storePass;			//stores password for future use
 	  public static void loginPass(String login) throws IOException{
-		  storeLogin = login;
+		  name = login;
 	  }
 	  public static void passwordPass(String pass) throws IOException{
 		  storePass = pass;
@@ -85,16 +85,16 @@ public void createGame(){
 	GameUI game = new GameUI(); // I ADDED THIS TO CREATE A NEW WINDOW SINCE IT WOULD JUST OPEN THE OLD GAME WITH THE COLORS (but not values) FILLED IN. COOLBEANS RIGHT?
 	game.setVisible(true);		
 	Game.setBoardValues();
-	//Player player1 = new Player("P1");
-	//player1.playerTurn = true;
-	//player1.setColor(Color.BLACK);
+	Player player1 = new Player(name);
+	player1.startTurn(true, Color.BLACK);
+
 }
 
 public void joinGame(GameUI game){
 	
 	game.setVisible(true);
-	//Player player2 = new Player("P2");
-	//player2.setColor(Color.WHITE);
+	Player player2 = new Player("P2");
+	player2.startTurn(false, Color.WHITE);
 }
 
 

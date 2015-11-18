@@ -6,9 +6,8 @@ public class Player {
 	
 	String PName = "";
 	
-	static boolean player1Turn = true; //Default values
-	static boolean player2Turn = false;
-	static Color pColor = Color.BLACK; 
+	static boolean player1Turn = false; //Default values
+	static boolean player2Turn = false; 
 			
 	public Player(String name) {
 		PName = name;
@@ -45,4 +44,14 @@ public class Player {
 	
 	public static void main(String[] args) {	
 	}
+
+
+	public void startTurn(boolean turn, Color color) {	//sets the first player to be able to set a piece to BLACK. 
+		if(turn = true){
+			player1Turn = true;
+		}
+		
+		
+	}
+
 }
