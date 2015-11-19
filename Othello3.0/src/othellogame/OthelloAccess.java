@@ -31,7 +31,6 @@ public class OthelloAccess {
 
 
 
-
 	//MAIN//
 	public static void main(String[] args){
 

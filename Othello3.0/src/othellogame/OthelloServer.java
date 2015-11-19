@@ -82,19 +82,20 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  
 
 public void createGame(){
+	Player player1 = new Player("P1", Color.BLACK);
+	player1.startTurn(true, Color.BLACK);
 	GameUI game = new GameUI(); // I ADDED THIS TO CREATE A NEW WINDOW SINCE IT WOULD JUST OPEN THE OLD GAME WITH THE COLORS (but not values) FILLED IN. COOLBEANS RIGHT?
 	game.setVisible(true);		
 	Game.setBoardValues();
-	Player player1 = new Player(name);
-	player1.startTurn(true, Color.BLACK);
+	
 
 }
 
 public void joinGame(GameUI game){
-	
-	game.setVisible(true);
-	Player player2 = new Player("P2");
+	Player player2 = new Player("P2", Color.WHITE);
 	player2.startTurn(false, Color.WHITE);
+	game.setVisible(true);
+	
 }
 
 

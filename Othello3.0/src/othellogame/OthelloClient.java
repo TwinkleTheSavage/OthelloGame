@@ -27,7 +27,6 @@ public class OthelloClient extends AbstractClient{
 
 	@Override
 	protected void handleMessageFromServer(Object msg) {
-		// TODO Auto-generated method stub
 		
 	}
 	
