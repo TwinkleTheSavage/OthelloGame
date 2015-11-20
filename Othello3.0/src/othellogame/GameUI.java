@@ -52,6 +52,12 @@ public class GameUI extends javax.swing.JFrame{
      	    blackLabel.setText("BLACK");
     	}
     }
+    public static String getBlackScore(){				//grabs the final score at the end of the game. Avoids scanning through whole array for nothing.
+    	return blackScore.getText();
+    }
+    public static String getWhiteScore(){
+    	return whiteScore.getText();
+    }
     //End of J-P section
 
     /**

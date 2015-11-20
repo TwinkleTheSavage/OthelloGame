@@ -55,16 +55,20 @@ public class Game {
 	}
 	
 	//Jean-Philippe Lebel
-	public static void possibleMoves(Color color){
+	public static boolean possibleMoves(Color color){
 		boolean notActualPiece = false;
+		boolean continueGame = false;
 		Color colPass = color;
 		for(int row=0; row<board.length; row++){
 		   for(int col=0; col<board.length; col++){
 			   if(board[row][col] == 1 || board[row][col] == 2){
-				   GameRules.canMove(board, row, col, colPass, notActualPiece);    
+				   if (GameRules.canMove(board, row, col, colPass, notActualPiece) == true){    
+					   continueGame = true;
+				   }
 			   }
 		   }
 		}
+		return continueGame;
 	}
 	
 	
@@ -127,21 +131,27 @@ public class Game {
 	static boolean player2Turn = false; 
 	public static boolean isColorTurn(Color color){		//used to switch turns between players
 		boolean isTurn = false;
-		if(color == Color.BLACK && player1Turn == true){
-			isTurn = true;
-			player1Turn = false;
-			player2Turn = true;
-			Game.updateColors(); //clears the board of previous possible moves
-			Game.possibleMoves(Color.WHITE);
+		//if(Game.possibleMoves(Color.BLACK) == true || Game.possibleMoves(Color.WHITE) == true){				//still working on win condition.
+			if(color == Color.BLACK && player1Turn == true){
+				isTurn = true;
+					player1Turn = false;
+					player2Turn = true;
+					Game.updateColors(); //clears the board of previous possible moves
+					Game.possibleMoves(Color.WHITE); //shows possible moves for current player color
+				}
+				else if (color == Color.WHITE&& player2Turn == true){
+				isTurn = true;
+				player1Turn = true;
+				player2Turn = false;
+				Game.updateColors();
+				Game.possibleMoves(Color.BLACK);
+			}
+		//}
+		else{
+			GameRules.stopGame();
 		}
-		else if (color == Color.WHITE&& player2Turn == true){
-			isTurn = true;
-			player1Turn = true;
-			player2Turn = false;
-			Game.updateColors();
-			Game.possibleMoves(Color.BLACK);
-		}
-			//shows possible moves for current player color
+			
+			
 		return isTurn;
 		
 	}
