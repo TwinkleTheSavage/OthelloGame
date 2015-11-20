@@ -25,8 +25,21 @@ public class OthelloServer extends AbstractServer{
 	GameUI game = new GameUI();
     int [][] Board = testGame.board;
 
+
+
+    //int to compare pw to username
+    int playerCount = 0;
 	static String name;			//stores login name for future use.
+	
+	//array of usernames
+	String names[] = new String[20];
+	
 	static String storePass;			//stores password for future use
+	
+	//array of passwords
+	String pws[] = new String[20];
+
+
 	  public static void loginPass(String login) throws IOException{
 		  name = login;
 	  }
