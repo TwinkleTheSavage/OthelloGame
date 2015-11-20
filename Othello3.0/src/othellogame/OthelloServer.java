@@ -76,8 +76,47 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  if (msg.equals("cg"))
 	 this.createGame();
  
- else
+ else if (msg.equals("jg"))
 	 this.joinGame(game);
+	 
+	  //sending messages to server, "reg" should start this if clause
+ else if (((String) msg).startsWith("r")){
+	
+	 //split the string and set each part to an index in this array
+	tokens = ((String) msg).split(" ");
+	
+	//"reg RJB12 33343" should send RJB12 to names[] and 33343 to pws[] right?
+ 	names[playerCount] = tokens[1];
+ 	pws[playerCount] = tokens[2];
+ 	
+ 	//move playerCount to ensure the next registration puts their info in the next slot of array
+ 	playerCount++;
+ 	
+ 	System.out.println("Registration successful");
+ }
+ 
+ else if (((String) msg).startsWith("l")){
+	 tokens = ((String) msg).split(" ");
+	 for (int i = 0; i <= playerCount; i++){
+		 
+		 //debugging
+		 System.out.println(names[i] + " " + pws[i]);
+		 System.out.println(tokens[1] + " " + tokens[2]);
+		 //
+		 
+		 if (tokens[1].equals(names[i])){
+			 if (tokens[2].equals(pws[i])){
+				 System.out.println("login successful");
+				 
+				 
+			 }
+			 	
+		 }
+				 
+	 }
+ }
+ 
+ else return;
 }
  
 
