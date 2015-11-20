@@ -24,7 +24,8 @@ public class GameRules {
 		else if (temp == Color.WHITE){
 			passingColorID = 2;
 			checkingColorID = 1;
-		}																							
+		}
+		
 				if(j+1 != 8 && temparray[i][j+1] == checkingColorID){					 					 
 					int row = i;				
 					for(int column = j; column < 8; column++){			//scans through direction to see if there is a piece of the same color in the direction, starting from the piece clicked, moving in the direction described
@@ -207,7 +208,6 @@ public class GameRules {
 					}
 			}	
 		}
-	
 		public static void flipPiecesUpRight(int i, int j, Color colorPass, int colorNum){
 			Color color = colorPass; //up/right	
 			for(int row = i, column = j; row > -1 && column < 8; row--, column++){		
@@ -274,51 +274,57 @@ public class GameRules {
 			}
 		}
 	//DIAGONALS
-		public static void possibleShowUpLeft(int i, int j, int colorNum){			//up/left	
-			for(int row = i, column = j; row > -1 && column > -1; row--, column--){
-				if(i-1 != -1 && j-1 != -1){
-					if (Game.board[row][j] == colorNum){
+		public static void possibleShowUpLeft(int i, int j, int colorNum){			//up/left
+			if(i-1 != -1 && j-1 != -1){
+				for(int row = i-1, column = j-1; row > -1 && column > -1; row--, column--){
+					if (Game.board[row][column] == colorNum){
 						break;
 					}
-					else if (Game.board[row][j] == 0){
-						//GameUI.setColor(row, j, Color.GRAY);
+					else if (Game.board[row][column] == 0){
+						GameUI.setColor(row, column, Color.GRAY);
 						break;
 					}
 				}
-			}	
+			}
 		}
 		public static void possibleShowDownRight(int i, int j, int colorNum){		//down/right	
-			for(int row = 0, column = 0; row < 8 && column < 8; row++, column++){
-				if (Game.board[row][j] == colorNum){
-					break;
-				}
-				else if (Game.board[row][j] == 0){
-					//GameUI.setColor(row, j, Color.GRAY);
-					break;
+			if(i+1 != 8 && j+1 != 8){
+				for(int row = i+1, column = j+1; row < 8 && column < 8; row++, column++){
+					if (Game.board[row][column] == colorNum){
+						break;
+					}
+					else if (Game.board[row][column] == 0){
+						GameUI.setColor(row, column, Color.GRAY);
+						break;
+					}
 				}
 			}
 		}
 		public static void possibleShowDownLeft(int i, int j, int colorNum){		//down/left	
-			for(int row = i, column = j; row < 8 && column > -1; row++, column--){
-				if (Game.board[row][j] == colorNum){
-					break;
-				}
-				else if (Game.board[row][j] == 0){
-					//GameUI.setColor(row, j, Color.GRAY);
-					break;
-				}
-			}	
+			if(i+1 != 8 && j-11 != -1){
+				for(int row = i+1, column = j-1; row < 8 && column > -1; row++, column--){
+					if (Game.board[row][column] == colorNum){
+						break;
+					}
+					else if (Game.board[row][column] == 0){
+						GameUI.setColor(row, column, Color.GRAY);
+						break;
+					}
+				}	
+			}
 		}
 		public static void possibleShowUpRight(int i, int j, int colorNum){		//up/right
-			for(int row = i, column = j; row > -1 && column < 8; row--, column++){		
-				if (Game.board[row][j] == colorNum){
-					break;
+			if(i-1 != -1 && j+1 != 8){
+				for(int row = i-1, column = j+1; row > -1 && column < 8; row--, column++){		
+					if (Game.board[row][column] == colorNum){
+						break;
+					}
+					else if (Game.board[row][column] == 0){
+						GameUI.setColor(row, column, Color.GRAY);
+						break;
+					}
 				}
-				else if (Game.board[row][j] == 0){
-					//GameUI.setColor(row, j, Color.GRAY);
-					break;
-				}
-			}	
+			}
 		}	
 	
 	
