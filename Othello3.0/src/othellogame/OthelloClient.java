@@ -7,7 +7,8 @@ import client.*;
 public class OthelloClient extends AbstractClient{
 
 	LobbyUI lobbyUI;
-	
+	LoginUI loginUI;
+		
 	public OthelloClient(String host, int port) throws IOException{
 	    super(host, port); //Call the superclass constructor
 	    openConnection();
@@ -24,9 +25,45 @@ public class OthelloClient extends AbstractClient{
 		}
 		
 	}
+	
+	public OthelloClient(String host, int port, LoginUI loginUI) {
+		super(host, port);
+		this.loginUI = loginUI;
+		try {
+			openConnection();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void login(String name, String pw){
+		try {
+			sendToServer("log " + name + " " + pw);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void register(String name, String pw){
+		try {
+			sendToServer("reg " + name + " " + pw);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showLobby(){
+		
+		
+	}
 
 	@Override
 	protected void handleMessageFromServer(Object msg) {
+		// TODO Auto-generated method stub
 		
 	}
 	

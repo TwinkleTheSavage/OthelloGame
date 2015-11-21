@@ -15,12 +15,23 @@ import java.io.IOException;
  */
 public class LoginUI extends javax.swing.JFrame {
 
+	
+	
+	OthelloClient client;
     /**
      * Creates new form LoginUI
      */
     public LoginUI() {
         initComponents();
     }
+    
+    public LoginUI(String host, int port) 
+	{
+		client= new OthelloClient(host, port, this);
+		initComponents();
+	}
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,16 +190,30 @@ public class LoginUI extends javax.swing.JFrame {
     	String tempLog = userNameTextBox.getText();
 		String tempPass = passwordTextBox.getText();
 		
-		OthelloServer.loginPass(tempLog);
-		OthelloServer.passwordPass(tempPass);
+		if (tempLog.length() == 5){
+			if (tempLog.matches("^[a-zA-Z0-9]*$")){
+				client.login(tempLog, tempPass);	
+				
+			}
+			
+				
+		}
+		else System.out.println("invalid login");
+		
+		
 		
 	}
     private void registerButtonActionPerformed(ActionEvent evt) throws IOException {
 		String tempLog = userNameTextBox.getText();
 		String tempPass = passwordTextBox.getText();
 		
-		OthelloServer.loginPass(tempLog);
-		OthelloServer.passwordPass(tempPass);
+		if (tempLog.length() == 5 || tempPass.length() == 5){
+			if (tempLog.matches("^[a-zA-Z0-9]*$") || tempPass.matches("[0-9]+"))
+				client.register(tempLog, tempPass);	
+				
+		}
+		else System.out.println("invalid username or password");
+
 	}
     
     
