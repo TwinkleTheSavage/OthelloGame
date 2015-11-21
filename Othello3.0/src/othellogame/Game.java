@@ -55,20 +55,26 @@ public class Game {
 	}
 	
 	//Jean-Philippe Lebel
-	public static boolean possibleMoves(Color color){
-		boolean notActualPiece = false;
-		boolean continueGame = false;
+	public static void possibleMoves(Color color){			//this method scans through the board, sending to canMove with not actual piece so that canMove goes to possibleMoveDirections*
+		boolean notActualPiece = false;											//it only sends colored pieces and not blank spaces, of course.
 		Color colPass = color;
+		boolean hasAMove = false;
 		for(int row=0; row<board.length; row++){
-		   for(int col=0; col<board.length; col++){
-			   if(board[row][col] == 1 || board[row][col] == 2){
-				   if (GameRules.canMove(board, row, col, colPass, notActualPiece) == true){    
-					   continueGame = true;
-				   }
-			   }
+			for(int col=0; col<board.length; col++){
+				if(board[row][col] == 1 || board[row][col] == 2){
+					GameRules.canMove(board, row, col, colPass, notActualPiece);
+				}
+				else if(board[row][col] == 0){
+					if(GameRules.isEnd(board, row, col, colPass) == 1){					
+						hasAMove = true;								//if isEnd returns true, then the game continues
+					}
+				}
 		   }
 		}
-		return continueGame;
+		if (hasAMove == false){											//else, hasAMove stays false, triggering stopGame.
+			GameRules.stopGame();
+		}
+		
 	}
 	
 	
@@ -77,10 +83,12 @@ public class Game {
 	//Jean-Philippe Lebel
 	public static void setPieceFlip(int row, int column, int passColor){
 		board[row][column] = passColor;
+		/*
 		for (int[] arr : board) {
-        System.out.println(Arrays.toString(arr)); //PRINTS OUR ARRAY. USED FOR DEBUGGING.
+        System.out.println(Arrays.toString(arr)); //PRINTS OUR ARRAY. USED FOR DEBUGGING. Also looks nice in console.
 		}
 		System.out.println("\n");
+		*/
 	}
 
 	//Method used to set pieces
@@ -116,6 +124,7 @@ public class Game {
 				if(GameRules.canMove(board, i, j, storeCol, actualPiece) == true){// GAMERULE METHOD TO CHECK IF PLACE IS POSSIBLE
 					board[i][j] = 2;
 					returnval = true;
+					
 				}
 			}
 		}
@@ -125,34 +134,25 @@ public class Game {
 	
 	
 	
-	
 	//Jean-Philippe Lebel
 	static boolean player1Turn = false; //Default values
 	static boolean player2Turn = false; 
 	public static boolean isColorTurn(Color color){		//used to switch turns between players
 		boolean isTurn = false;
-		//if(Game.possibleMoves(Color.BLACK) == true || Game.possibleMoves(Color.WHITE) == true){				//still working on win condition.
 			if(color == Color.BLACK && player1Turn == true){
 				isTurn = true;
 					player1Turn = false;
 					player2Turn = true;
-					Game.updateColors(); //clears the board of previous possible moves
-					Game.possibleMoves(Color.WHITE); //shows possible moves for current player color
-				}
-				else if (color == Color.WHITE&& player2Turn == true){
-				isTurn = true;
-				player1Turn = true;
-				player2Turn = false;
-				Game.updateColors();
-				Game.possibleMoves(Color.BLACK);
+					Game.updateColors();							//clears the board of previous possible moves
 			}
-		//}
-		else{
-			GameRules.stopGame();
-		}
-			
-			
-		return isTurn;
+			else if (color == Color.WHITE && player2Turn == true){
+				isTurn = true;
+					player1Turn = true;
+					player2Turn = false;
+					Game.updateColors();
+				
+			}
+			return isTurn;
 		
 	}
 	
@@ -162,17 +162,17 @@ public class Game {
 				GameUI.colorPass(Color.WHITE);
 				GameUI.turnLablePass(Color.WHITE);
 				System.out.println("It is now White's turn");
+				Game.possibleMoves(Color.WHITE); //displays possible moves for player.
 			}
 			else if(col == Color.WHITE){
 				GameUI.colorPass(Color.BLACK);
 				GameUI.turnLablePass(Color.BLACK);
 				System.out.println("It is now Black's turn");
+				Game.possibleMoves(Color.BLACK);
 			}
 	}
 
 	public static void player1Turn(boolean bool) {
 		player1Turn = true;
 	}
-	
-	
 }

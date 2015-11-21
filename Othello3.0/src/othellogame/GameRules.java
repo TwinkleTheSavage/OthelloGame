@@ -10,7 +10,7 @@ public class GameRules {
 	
 	//METHOD TO CHECK IF CAN PLACE PIECE
 	//This checks adjacent values first, to see if you can place a piece of another color next to it, the searches deeper to see if there's a piece of the same color at the end. 
-	//This method is reused by three main rules: possibleMoves, isEndGame and setPiece
+	//This method is reused by two main rules: possibleMoves and setPiece
 	//Jean-Philippe Lebel
 	public static boolean canMove(int[][] temparray, int i, int j, Color temp, boolean isActualPiece){
 		boolean actualPiece = isActualPiece;
@@ -25,6 +25,7 @@ public class GameRules {
 			passingColorID = 2;
 			checkingColorID = 1;
 		}
+		
 		
 				if(j+1 != 8 && temparray[i][j+1] == checkingColorID){					 					 
 					int row = i;				
@@ -60,7 +61,6 @@ public class GameRules {
 								flipPiecesUp(i, j, temp, passingColorID);
 							else if (actualPiece == false)
 								possibleShowUp(i, j, passingColorID);
-							
 						}	//Looks up	
 					}								
 				}											
@@ -121,8 +121,10 @@ public class GameRules {
 									possibleShowUpRight(i, j, passingColorID);
 						}		//Looks up/right
 					}
-				}		
-	return returnval;	//returns either true, or false, depending if any direction works
+				}	
+				//System.out.println("Returnval is " + returnval); //debugging
+				return returnval;	//returns either true, or false, depending if any direction works
+				
 	}
 	
 	
@@ -165,7 +167,6 @@ public class GameRules {
 				else{
 					GameUI.setColor(row, j, color);
 					Game.setPieceFlip(row, j, colorNum);
-					System.out.println(row + " " + j);
 				}
 			}
 		}
@@ -179,7 +180,6 @@ public class GameRules {
 					else{
 						GameUI.setColor(row, column, color);
 						Game.setPieceFlip(row, column, colorNum);
-						System.out.println(row + " " + j);
 					}
 			}	
 		}
@@ -192,7 +192,6 @@ public class GameRules {
 					else{
 						GameUI.setColor(row, column, color);
 						Game.setPieceFlip(row, column, colorNum);
-
 					}
 			}	
 		}
@@ -327,9 +326,107 @@ public class GameRules {
 			}
 		}	
 	
-	
-	
-	
+		//Jean-Philippe Lebel
+		public static int isEnd(int[][] temparray, int i, int j, Color temp){ //this essentially does the same thing as canMove, except it looks to see if there's an available move, without calling anything
+			boolean returnvalR = false;										  //it's also a little different in what it returns and works, validating its existence. I hope.
+			boolean returnvalL = false;
+			boolean returnvalU = false;
+			boolean returnvalD = false;
+			boolean returnvalRU = false;
+			boolean returnvalRD = false;
+			boolean returnvalLU = false;									//I'll explain how it works up here. It's simpler that way
+			boolean returnvalLD = false;									//if any of the directions for a 0 value work on the board, it sets it's corresponding value to true	
+																			//if any one value is true, it'll return true for the entire method, meaning that the game still has possible moves.
+																			//else, if no direction works then it returns false
+			int passingColorID = 0;
+			int checkingColorID = 0;
+			if(temp == Color.BLACK){
+				passingColorID = 1;
+				checkingColorID = 2;
+			}
+			else if (temp == Color.WHITE){
+				passingColorID = 2;
+				checkingColorID = 1;
+			}
+			
+				if(j+1 != 8 && temparray[i][j+1] == checkingColorID){					 					 
+					int row = i;				
+					for(int column = j; column < 8; column++){			
+						if (temparray[row][column] == passingColorID){				
+							returnvalR = true;				
+						}	//Looks right	
+					}		
+				}															
+				if(j-1 != -1 && temparray[i][j-1] == checkingColorID){			
+					int row = i;
+					for(int column = j; column > -1; column--){
+						if (temparray[row][column] == passingColorID){
+								returnvalL = true;
+						}	//Looks left	
+					}							
+				}														
+				if(i-1 != -1 && temparray[i-1][j] == checkingColorID){				
+					int column = j;										
+					for(int row = i; row >-1; row--){					
+						if (temparray[row][column] == passingColorID){				
+							returnvalU = true;
+						}	//Looks up	
+					}								
+				}											
+				if(i+1 != 8 && temparray[i+1][j] == checkingColorID){			
+					int column = j;
+					for(int row = i; row < 8; row++){
+						if (temparray[row][column] == passingColorID){
+							returnvalD = true;	
+						}		//Looks down
+					}
+				}	
+					//DIAGONALS														
+					if(i-1 != -1 && j-1 != -1 && temparray[i-1][j-1] == checkingColorID){			
+						for(int row = i, column = j; row > -1 && column > -1; row--, column--){				
+								if (temparray[row][column] == passingColorID){
+									returnvalLU = true;
+								}		//Looks up/left
+						}
+					}
+					if(i+1 != 8 && j+1 != 8 && temparray[i+1][j+1] == checkingColorID){
+						for(int row = i, column = j; row < 8 && column < 8; row++, column++){
+								if (temparray[row][column] == passingColorID){
+									returnvalRD = true;
+								}		//Looks down/right
+						}
+					}
+					if(i+1 != 8 && j-1 != -1 && temparray[i+1][j-1] == checkingColorID){
+						for(int row = i, column = j; row < 8 && column > -1; row++, column--){
+								if (temparray[row][column] == passingColorID){
+									returnvalLD = true;
+							}		//Looks down/left
+						}
+					}
+					if(i-1 != -1 && j+1 != 8 && temparray[i-1][j+1] == checkingColorID){
+						for(int row = i, column = j; row > -1 && column < 8; row--, column++){
+								if (temparray[row][column] == passingColorID){
+									returnvalRU = true;
+							}		//Looks up/right
+						}
+					}	
+					if(returnvalR == true || returnvalL == true || returnvalU == true || returnvalD == true || returnvalLU == true ||returnvalRU == true || returnvalLD == true || returnvalRD){
+						return 1;
+					}
+					else{
+						return 0;
+					}
+			
+						//returns either true, or false, depending if any direction works
+					
+		}
+		
+		
+		
+		
+		
+		
+		
 	public static void stopGame(){
 		System.out.println("Black's score is: ");
 		System.out.println(GameUI.getBlackScore());
