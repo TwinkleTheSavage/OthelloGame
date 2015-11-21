@@ -85,6 +85,7 @@ public OthelloServer(int port){
 public void handleMessageFromClient(Object msg, ConnectionToClient client){
 	//juicy feedback
  System.out.println("Message received: " + msg + " from " + client);
+ String[] tokens = new String[3];
  
  if (msg.equals("cg"))
 	 this.createGame();
