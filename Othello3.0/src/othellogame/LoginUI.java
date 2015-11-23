@@ -59,11 +59,11 @@ public class LoginUI extends javax.swing.JFrame {
 
         passwordTextBox.setFont(new java.awt.Font("Tahoma", 0, 24));
         passwordTextBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        passwordTextBox.setText("PASSWORD");
+       // passwordTextBox.setText("PASSWORD");
 
         userNameTextBox.setFont(new java.awt.Font("Tahoma", 0, 24));
         userNameTextBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        userNameTextBox.setText("USERNAME");
+       // userNameTextBox.setText("USERNAME");
 
         usernameInfoB.setFont(new java.awt.Font("Tahoma", 0, 16)); 
         usernameInfoB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -203,14 +203,13 @@ public class LoginUI extends javax.swing.JFrame {
 		
 		if (tempLog.length() == 5){
 			if (tempLog.matches("^[a-zA-Z0-9]*$")){
-				client.login(tempLog, tempPass);	
-				
+				client.login(tempLog, tempPass);
 			}
-			
-				
 		}
-		confirmationLabel.setText("***INVALID LOGIN INFORMATION***");
 		
+		else 
+			confirmationLabel.setText("***INVALID LOGIN INFORMATION***");
+			
 		
 		
 	}
@@ -220,8 +219,8 @@ public class LoginUI extends javax.swing.JFrame {
 		String tempLog = userNameTextBox.getText();
 		String tempPass = passwordTextBox.getText();
 		
-		if (tempLog.length() == 5 || tempPass.length() == 5){
-			if (tempLog.matches("^[a-zA-Z0-9]*$") || tempPass.matches("[0-9]+"))
+		if (tempLog.length() == 5 && tempPass.length() == 5){
+			if (tempLog.matches("^[a-zA-Z0-9]*$") && tempPass.matches("[0-9]+"))
 				client.register(tempLog, tempPass);	
 				
 		}

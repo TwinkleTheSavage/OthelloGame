@@ -5,14 +5,26 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import javax.swing.SwingUtilities;
 
+@SuppressWarnings("serial")
 public class GameUI extends javax.swing.JFrame {
 
+	
+	Game game;
+	
     //GameUI form is initialized here
     public GameUI() 
     {
         initComponents();
+    }
+    
+    public GameUI(Game game){
+    	
+    	this.game = game;
+    	initComponents();
+    	this.setVisible(true);
     }
     
     //Jean-Philippe Lebel
@@ -753,63 +765,63 @@ public class GameUI extends javax.swing.JFrame {
 
     //Action listeners that set the tile color and switch players for each of the 64 buttons
     private void A1ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (Game.setPiece(spectrum, 0, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 0) == true && game.isColorTurn(spectrum) == true) {
             A1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
         }
     }
 
     private void A2ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (Game.setPiece(spectrum, 0, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 1) == true && game.isColorTurn(spectrum) == true) {
             A2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
         }
     }
 
     private void A3ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (Game.setPiece(spectrum, 0, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 2) == true && game.isColorTurn(spectrum) == true) {
             A3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void A4ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (Game.setPiece(spectrum, 0, 3) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 3) == true && game.isColorTurn(spectrum) == true) {
             A4.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void A5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 0, 4) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 4) == true && game.isColorTurn(spectrum) == true) {
             A5.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void A6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 0, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 5) == true && game.isColorTurn(spectrum) == true) {
             A6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void A7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 0, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 6) == true && game.isColorTurn(spectrum) == true) {
             A7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void A8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 0, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 0, 7) == true && game.isColorTurn(spectrum) == true) {
             A8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -817,65 +829,65 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 0) == true && game.isColorTurn(spectrum) == true) {
             B1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 1) == true && game.isColorTurn(spectrum) == true) {
             B2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 2) == true && game.isColorTurn(spectrum) == true) {
             B3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 3) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 3) == true && game.isColorTurn(spectrum) == true) {
             B4.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 4) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 4) == true && game.isColorTurn(spectrum) == true) {
             B5.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 5) == true && game.isColorTurn(spectrum) == true) {
             B6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 6) == true && game.isColorTurn(spectrum) == true) {
             B7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void B8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 1, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 1, 7) == true && game.isColorTurn(spectrum) == true) {
             B8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -883,65 +895,65 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void C1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 0) == true && game.isColorTurn(spectrum) == true) {
             C1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 1) == true && game.isColorTurn(spectrum) == true) {
             C2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed	
-        if (Game.setPiece(spectrum, 2, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 2) == true && game.isColorTurn(spectrum) == true) {
             C3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 3) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 3) == true && game.isColorTurn(spectrum) == true) {
             C4.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 4) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 4) == true && game.isColorTurn(spectrum) == true) {
             C5.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 5) == true && game.isColorTurn(spectrum) == true) {
             C6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 6) == true && game.isColorTurn(spectrum) == true) {
             C7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void C8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 2, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 2, 7) == true && game.isColorTurn(spectrum) == true) {
             C8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -949,49 +961,49 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void D1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 3, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 3, 0) == true && game.isColorTurn(spectrum) == true) {
             D1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void D2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 3, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 3, 1) == true && game.isColorTurn(spectrum) == true) {
             D2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void D3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 3, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 3, 2) == true && game.isColorTurn(spectrum) == true) {
             D3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void D6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 3, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 3, 5) == true && game.isColorTurn(spectrum) == true) {
             D6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void D7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 3, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 3, 6) == true && game.isColorTurn(spectrum) == true) {
             D7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void D8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 3, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 3, 7) == true && game.isColorTurn(spectrum) == true) {
             D8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -999,50 +1011,50 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void E1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 4, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 4, 0) == true && game.isColorTurn(spectrum) == true) {
             E1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
 
     }
 
     private void E2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 4, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 4, 1) == true && game.isColorTurn(spectrum) == true) {
             E2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void E3ActionPerformed(java.awt.event.ActionEvent evt) {
-        if (Game.setPiece(spectrum, 4, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 4, 2) == true && game.isColorTurn(spectrum) == true) {
             E3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void E6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 4, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 4, 5) == true && game.isColorTurn(spectrum) == true) {
             E6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void E7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 4, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 4, 6) == true && game.isColorTurn(spectrum) == true) {
             E7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void E8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 4, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 4, 7) == true && game.isColorTurn(spectrum) == true) {
             E8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -1050,65 +1062,65 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void F1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 0) == true && game.isColorTurn(spectrum) == true) {
             F1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 1) == true && game.isColorTurn(spectrum) == true) {
             F2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 2) == true && game.isColorTurn(spectrum) == true) {
             F3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 3) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 3) == true && game.isColorTurn(spectrum) == true) {
             F4.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 4) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 4) == true && game.isColorTurn(spectrum) == true) {
             F5.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 5) == true && game.isColorTurn(spectrum) == true) {
             F6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 5, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 6) == true && game.isColorTurn(spectrum) == true) {
             F7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void F8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed	
-        if (Game.setPiece(spectrum, 5, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 5, 7) == true && game.isColorTurn(spectrum) == true) {
             F8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -1116,65 +1128,65 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void G1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 0) == true && game.isColorTurn(spectrum) == true) {
             G1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 1) == true && game.isColorTurn(spectrum) == true) {
             G2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 2) == true && game.isColorTurn(spectrum) == true) {
             G3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 3) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 3) == true && game.isColorTurn(spectrum) == true) {
             G4.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 4) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 4) == true && game.isColorTurn(spectrum) == true) {
             G5.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 5) == true && game.isColorTurn(spectrum) == true) {
             G6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 6) == true && game.isColorTurn(spectrum) == true) {
             G7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void G8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 6, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 6, 7) == true && game.isColorTurn(spectrum) == true) {
             G8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
@@ -1182,71 +1194,71 @@ public class GameUI extends javax.swing.JFrame {
     //---
 
     private void H1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 0) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 0) == true && game.isColorTurn(spectrum) == true) {
             H1.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 1) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 1) == true && game.isColorTurn(spectrum) == true) {
             H2.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 2) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 2) == true && game.isColorTurn(spectrum) == true) {
             H3.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 3) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 3) == true && game.isColorTurn(spectrum) == true) {
             H4.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 4) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 4) == true && game.isColorTurn(spectrum) == true) {
             H5.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 5) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 5) == true && game.isColorTurn(spectrum) == true) {
             H6.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 6) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 6) == true && game.isColorTurn(spectrum) == true) {
             H7.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     private void H8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_H3ActionPerformed
-        if (Game.setPiece(spectrum, 7, 7) == true && Game.isColorTurn(spectrum) == true) {
+        if (game.setPiece(spectrum, 7, 7) == true && game.isColorTurn(spectrum) == true) {
             H8.setBackground(spectrum);
-            Game.switchCol(spectrum);
+            game.switchCol(spectrum);
 
         }
     }
 
     //Sets the color of the tile 
-    static void setColor(int i, int j, Color col) {
+    void setColor(int i, int j, Color col) {
         //Row A
         if (i == 0 && j == 0) {
             A1.setBackground(col);

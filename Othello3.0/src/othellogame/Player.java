@@ -8,12 +8,12 @@ public class Player {
 	static Color Pcolor;
 	
 	
+	Game game;
 	
-	
-	public static String getPName(){
+	public String getPName(){
 		return PName;
 	}
-	public static Color getPcolor(){
+	public Color getPcolor(){
 		return Pcolor;
 	}
 			
@@ -24,7 +24,7 @@ public class Player {
 	
 	public void startTurn(boolean turn, Color color) {	//sets the first player to be able to set a piece to BLACK. 
 		if(turn = true){
-			Game.player1Turn(true);
+			game.player1Turn(true);
 		}	
 	}
 

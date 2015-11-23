@@ -20,12 +20,12 @@ import server.*;
 * @version July 2000
 */
 public class OthelloServer extends AbstractServer{
-	Game testGame = new Game();
+	
+	//Game game;
+	//Game game2;
 
-	GameUI game = new GameUI();
-    int [][] Board = testGame.board;
-
-
+	int gameCount = 0;
+	
 
     //int to compare pw to username
     int playerCount = 0;
@@ -46,7 +46,7 @@ public class OthelloServer extends AbstractServer{
 	  public static void passwordPass(String pass) throws IOException{
 		  storePass = pass;
 	  }
-	 //Should we save these in an array or a file?
+	 
 	
 	
 	
@@ -90,8 +90,8 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  if (msg.equals("cg"))
 	 this.createGame();
  
- else if (msg.equals("jg"))
-	 this.joinGame(game);
+ else if (msg.equals("jg")){}
+	 //this.joinGame(game);
 	 
 	  //sending messages to server, "reg" should start this if clause
  else if (((String) msg).startsWith("r")){
@@ -99,11 +99,11 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
 	 //split the string and set each part to an index in this array
 	tokens = ((String) msg).split(" ");
 	
-	//"reg RJB12 33343" should send RJB12 to names[] and 33343 to pws[] right?
+	//"reg RJB12 33343" should send RJB12 to names[] and 33343 to pws[] 
  	names[playerCount] = tokens[1];
  	pws[playerCount] = tokens[2];
  	
- 	//move playerCount to ensure the next registration puts their info in the next slot of array
+ 	//increment playerCount to ensure the next registration puts their info in the next slot of array
  	playerCount++;
  	
  	System.out.println("Registration successful");
@@ -122,8 +122,14 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
 			 if (tokens[2].equals(pws[i])){
 				 System.out.println("login successful");
 				 
-				 
+				 try {
+					client.sendToClient("gli");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 }
+			 else System.out.println("invalid password, try again.");
 			 	
 		 }
 				 
@@ -135,19 +141,58 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  
 
 public void createGame(){
-	Player player1 = new Player("P1", Color.BLACK);
-	player1.startTurn(true, Color.BLACK);
-	GameUI game = new GameUI(); // I ADDED THIS TO CREATE A NEW WINDOW SINCE IT WOULD JUST OPEN THE OLD GAME WITH THE COLORS (but not values) FILLED IN. COOLBEANS RIGHT?
-	game.setVisible(true);		
-	Game.setBoardValues();
+
+
+	//if (gameCount == 0){
+		
+		Player player1 = new Player("P1", Color.BLACK);
+		player1.startTurn(true, Color.BLACK);
+		
+		//create a game named "game1"
+		Game game = new Game("game1");
+		game.showGameUICreator();
+		//create a GameUI with argument game, which is a Game object 
+		//gameUI = new GameUI(game); 
+		//gameUI.setVisible(true);	
+		
+		//increment gameCount so we know how many games have been created
+		gameCount++;
+		
+		//add a String to the LobbyUI list
+		LobbyUI.addToList("Game 1");
+	//}
 	
+		/*
+	else if (gameCount == 1){
+		Player player1 = new Player("P1", Color.BLACK);
+		player1.startTurn(true, Color.BLACK);
+		Game game2 = new Game("game2");
+		//gameUI2 = new GameUI(game2); // I ADDED THIS TO CREATE A NEW WINDOW SINCE IT WOULD JUST OPEN THE OLD GAME WITH THE COLORS (but not values) FILLED IN. COOLBEANS RIGHT?
+		//gameUI2.setVisible(true);
+		gameCount++;
+		LobbyUI.addToList("Game 2");
+	}
+	*/
+	//else System.out.println("Sorry, max number of games created.");
+
 
 }
 
-public void joinGame(GameUI game){
+public void joinGame(Game game){
 	Player player2 = new Player("P2", Color.WHITE);
 	player2.startTurn(false, Color.WHITE);
-	game.setVisible(true);
+	
+	if (gameCount == 0){
+		//gameUI = new GameUI(game);
+		//gameUI.setVisible(true);
+	}
+	else if (gameCount == 1){
+		//gameUI2 = new GameUI(game2);
+		//gameUI2.setVisible(true);
+	}
+	
+	else return;
+	
 	
 }
 
@@ -172,39 +217,9 @@ protected void serverStopped(){
  
 }
 
-/*Giri*/
-	protected void clientConnected(ConnectionToClient client) { // Method
-																// overrides the
-																// one in the
-																// superclass.
-		// Called when a client connects.
-		if (getNumberOfClients() < 4) {
-			System.out.println("Clients connected  " + getNumberOfClients());
-			try {
-				client.sendToClient("client: " + getNumberOfClients());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		} else if (getNumberOfClients() == 4) {
-			System.out.println("Maximum possible number of clients connected");
-			try {
-				client.sendToClient("client: " + getNumberOfClients());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				client.sendToClient("Connection Refused");
-				client.close();
-				System.out.println("Connection Refused:Max Limit Reached");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-
-
-	}
+protected void clientConnected(ConnectionToClient client){					//Method overrides the one in the superclass.
+	  System.out.println("A client has connected.");							//Called when a client connects.
+}
 
 
 synchronized protected void clientDisconnected(ConnectionToClient client){	//Method overrides the one in the superclass.
