@@ -61,14 +61,16 @@ public class OthelloAccess {
 					+ " Terminating client.");
 			System.exit(1);
 		}
-
-
-		LoginUI log = new LoginUI("localhost", 5555); //THIS SHOULD BE LAUNCHING LoginUI BUT IT'S BROKE, SO WE'RE SKIPPING THAT STEP. FOR NOW.
-		log.setVisible(true);
-
-
-
 	}
+/*Giri*/
+	public static void launchUI(boolean status1){
+		if(status1){
 
+
+			LobbyUI log = new LobbyUI("localhost", 5555); //THIS SHOULD BE LAUNCHING LoginUI BUT IT'S BROKE, SO WE'RE SKIPPING THAT STEP. FOR NOW.
+		 	log.setVisible(true);
+		}
+	}
+	
 
 }

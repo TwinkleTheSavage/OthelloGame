@@ -172,9 +172,39 @@ protected void serverStopped(){
  
 }
 
-protected void clientConnected(ConnectionToClient client){					//Method overrides the one in the superclass.
-	  System.out.println("A client has connected.");							//Called when a client connects.
-}
+/*Giri*/
+	protected void clientConnected(ConnectionToClient client) { // Method
+																// overrides the
+																// one in the
+																// superclass.
+		// Called when a client connects.
+		if (getNumberOfClients() < 4) {
+			System.out.println("Clients connected  " + getNumberOfClients());
+			try {
+				client.sendToClient("client: " + getNumberOfClients());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (getNumberOfClients() == 4) {
+			System.out.println("Maximum possible number of clients connected");
+			try {
+				client.sendToClient("client: " + getNumberOfClients());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				client.sendToClient("Connection Refused");
+				client.close();
+				System.out.println("Connection Refused:Max Limit Reached");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+
+	}
 
 
 synchronized protected void clientDisconnected(ConnectionToClient client){	//Method overrides the one in the superclass.

@@ -8,7 +8,10 @@ public class OthelloClient extends AbstractClient{
 
 	LobbyUI lobbyUI;
 	LoginUI loginUI;
-		
+	public static String clientnum;
+	int limit=0;
+	
+
 	public OthelloClient(String host, int port) throws IOException{
 	    super(host, port); //Call the superclass constructor
 	    openConnection();
@@ -61,12 +64,42 @@ public class OthelloClient extends AbstractClient{
 		
 	}
 
+/*Giri*/
 	@Override
 	protected void handleMessageFromServer(Object msg) {
-		// TODO Auto-generated method stub
-		
+		String reply = msg.toString(); // Takes the value as string
+		if (reply.startsWith("client: ")) { // Verify the format of reply from
+											// server
+			clientnum = reply.substring(8); // Extracting the client number from
+											// the reply
+			System.out.println("client number is " + clientnum);
+			limit = Integer.parseInt(clientnum); // converting to integer for
+													// further operation
+
+			if (limit >= 1 && limit <= 4) { // We can allow maximum 4 players so
+											// verify the limit
+				if (limit == 1) { // Only first and 3rd user can open the lobby
+									// UI;second and fourth clients will join
+									// the existing lobby
+					OthelloAccess.launchUI(true);
+				} else if (limit == 3) {
+					OthelloAccess.launchUI(true);
+				} else {
+					OthelloAccess.launchUI(false);
+				}
+			}
+
+		} else if (reply.equals("Connection Refused")) { // Connection refused
+														// message generated
+															// at the server
+															// when more than 4
+															// players try to
+															// connect to the
+															// server
+			OthelloAccess.launchUI(false);
+
+		}
 	}
-	
 	public void handleMessageFromClientUI(String msg){
 		try {
 			sendToServer(msg);
