@@ -8,12 +8,12 @@ public class Player {
 	static Color Pcolor;
 	
 	
+	Game game;
 	
-	
-	public static String getPName(){
+	public String getPName(){
 		return PName;
 	}
-	public static Color getPcolor(){
+	public Color getPcolor(){
 		return Pcolor;
 	}
 			

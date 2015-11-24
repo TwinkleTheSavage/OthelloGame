@@ -1,5 +1,6 @@
 package othellogame;
 
+
 import java.io.*;
 
 import client.*;
@@ -8,12 +9,14 @@ public class OthelloClient extends AbstractClient{
 
 	LobbyUI lobbyUI;
 	LoginUI loginUI;
+	GameUI gameUI;
 		
 	public OthelloClient(String host, int port) throws IOException{
 	    super(host, port); //Call the superclass constructor
 	    openConnection();
 	  }
 
+	/*
 	public OthelloClient(String host, int port, LobbyUI lobbyUI) {
 		super(host, port);
 		this.lobbyUI = lobbyUI;
@@ -25,6 +28,7 @@ public class OthelloClient extends AbstractClient{
 		}
 		
 	}
+	*/
 	
 	public OthelloClient(String host, int port, LoginUI loginUI) {
 		super(host, port);
@@ -58,16 +62,21 @@ public class OthelloClient extends AbstractClient{
 	
 	public void showLobby(){
 		
+		lobbyUI = new LobbyUI(this);
 		
 	}
 
 	@Override
 	protected void handleMessageFromServer(Object msg) {
-		// TODO Auto-generated method stub
+		if (msg.equals("gli")){
+			this.showLobby();
+			loginUI.setVisible(false);
+		}
 		
 	}
 	
 	public void handleMessageFromClientUI(String msg){
+		
 		try {
 			sendToServer(msg);
 		} catch (IOException e) {
@@ -76,31 +85,7 @@ public class OthelloClient extends AbstractClient{
 		}
 	}
 
-	//accepts input from the console
-	/*
-	public void accept()
-	{
-		try
-		{
-			BufferedReader fromConsole =
-					new BufferedReader(new InputStreamReader(System.in));
-			String message;
-
-			while (true)
-			{
-				message = fromConsole.readLine();
-				//processmessage(message);
-			}
-		}
-		catch (Exception ex)
-		{
-			System.out.println
-					("Unexpected error while reading from console!");
-		}
-
-
-	}
-	*/
+	
 
 
 }

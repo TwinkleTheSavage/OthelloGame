@@ -1,58 +1,38 @@
 package othellogame;
 
-//This file contains material supporting section 3.7 of the textbook:
-//"Object Oriented Software Engineering" and is issued under the open-source
-//license found at www.lloseng.com 
+//Authors Ryan Buckalew, Jean-Philippe Label, Giriraj Nagaraju, Sean Smith
 
 import java.awt.Color;
 import java.io.*;
 
 import server.*;
 
-/**
-* This class overrides some of the methods in the abstract 
-* superclass in order to give more functionality to the server.
-*
-* @author Dr Timothy C. Lethbridge
-* @author Dr Robert Lagani&egrave;re
-* @author Fran&ccedil;ois B&eacute;langer
-* @author Paul Holden
-* @version July 2000
-*/
+
 public class OthelloServer extends AbstractServer{
-	Game testGame = new Game();
+	
+	Game game;
+	Game game2;
+	
+	GameUI gameUI;
+	GameUI gameUI2;
 
-	GameUI game = new GameUI();
-    int [][] Board = testGame.board;
-
-
+	int gameCount = 0;
+	
+	//int [][] board;
+	//int [][] board2;
 
     //int to compare pw to username
     int playerCount = 0;
-	static String name;			//stores login name for future use.
 	
 	//array of usernames
 	String names[] = new String[20];
 	
-	static String storePass;			//stores password for future use
 	
 	//array of passwords
 	String pws[] = new String[20];
 
 
-	  public static void loginPass(String login) throws IOException{
-		  name = login;
-	  }
-	  public static void passwordPass(String pass) throws IOException{
-		  storePass = pass;
-	  }
-	 //Should we save these in an array or a file?
-	
-	
-	
-	
-	
-	
+
 	
 	
 //Class variables *************************************************
@@ -85,24 +65,26 @@ public OthelloServer(int port){
 public void handleMessageFromClient(Object msg, ConnectionToClient client){
 	//juicy feedback
  System.out.println("Message received: " + msg + " from " + client);
+ String[] tokens = new String[3];
  
- if (msg.equals("cg"))
+ if (msg.equals("cg")){
 	 this.createGame();
+ }
  
- else if (msg.equals("jg"))
-	 this.joinGame(game);
-	 
+ else if (msg.equals("jg")){
+	 this.joinGame();
+ }
 	  //sending messages to server, "reg" should start this if clause
  else if (((String) msg).startsWith("r")){
 	
 	 //split the string and set each part to an index in this array
 	tokens = ((String) msg).split(" ");
 	
-	//"reg RJB12 33343" should send RJB12 to names[] and 33343 to pws[] right?
+	//"reg RJB12 33343" should send RJB12 to names[] and 33343 to pws[] 
  	names[playerCount] = tokens[1];
  	pws[playerCount] = tokens[2];
  	
- 	//move playerCount to ensure the next registration puts their info in the next slot of array
+ 	//increment playerCount to ensure the next registration puts their info in the next slot of array
  	playerCount++;
  	
  	System.out.println("Registration successful");
@@ -121,8 +103,14 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
 			 if (tokens[2].equals(pws[i])){
 				 System.out.println("login successful");
 				 
-				 
+				 try {
+					client.sendToClient("gli");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 }
+			 else System.out.println("invalid password, try again.");
 			 	
 		 }
 				 
@@ -134,19 +122,69 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  
 
 public void createGame(){
-	Player player1 = new Player("P1", Color.BLACK);
-	player1.startTurn(true, Color.BLACK);
-	GameUI game = new GameUI(); // I ADDED THIS TO CREATE A NEW WINDOW SINCE IT WOULD JUST OPEN THE OLD GAME WITH THE COLORS (but not values) FILLED IN. COOLBEANS RIGHT?
-	game.setVisible(true);		
-	Game.setBoardValues();
+
+
+	if (gameCount == 0){
+		
+		Player player1 = new Player("P1", Color.BLACK);
+		player1.startTurn(true, Color.BLACK);
+		
+		//create a game named "game1"
+		game = new Game();
 	
+		game.setBoardValues();
+		
+		
+		gameUI = new GameUI(game); 
+		gameUI.setVisible(true);	
+		
+		//increment gameCount so we know how many games have been created
+		gameCount++;
+		
+		//add a String to the LobbyUI list
+		//LobbyUI.addToList("Game 1");
+	}
+	
+		
+	else if (gameCount == 1){
+		
+		Player player1 = new Player("P1", Color.BLACK);
+		player1.startTurn(true, Color.BLACK);
+		
+		game2 = new Game();
+		
+		game2.setBoardValues();
+		
+		gameUI2 = new GameUI(game2); 
+		gameUI2.setVisible(true);
+		gameCount++;
+		//LobbyUI.addToList("Game 2");
+	}
+	
+	else System.out.println("Sorry, max number of games created.");
+
 
 }
 
-public void joinGame(GameUI game){
+public void joinGame(){
+	
 	Player player2 = new Player("P2", Color.WHITE);
 	player2.startTurn(false, Color.WHITE);
-	game.setVisible(true);
+	
+	if (gameCount == 1){
+		
+		gameUI = new GameUI(game);
+		gameUI.setVisible(true);
+		Game.updateColors();
+	}
+	else if (gameCount == 2){
+		
+		gameUI2 = new GameUI(game2);
+		gameUI2.setVisible(true);
+	}
+	
+	else return;
+	
 	
 }
 
@@ -181,9 +219,9 @@ synchronized protected void clientDisconnected(ConnectionToClient client){	//Met
 }
 
 //This method will update the game board after a player makes a move
-public void updateGameBoard(int[][] board){
+public static void updateBoardState(){
 
-
+	Game.updateColors();
 
     }
 
