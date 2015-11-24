@@ -8,8 +8,10 @@ public class Game {
 	int black = 1;
 	int white = 2;
 	static int [][] board = new int [8][8];
+	
+	
 	//Jean-Philippe Lebel
-	public static void setBoardValues(){ //THIS IS CALLED TO INITUALIZE THE BOARD. HAS TO BE CALLED WHEN GAME LAUNCHED
+	public void setBoardValues(){ //THIS IS CALLED TO INITUALIZE THE BOARD. HAS TO BE CALLED WHEN GAME LAUNCHED
 		for (int i = 0; i<board.length; i++){
 		     for (int j = 0; j<board[i].length; j++){
 		    	  board[i][j] = 0;
@@ -83,12 +85,13 @@ public class Game {
 	//Jean-Philippe Lebel
 	public static void setPieceFlip(int row, int column, int passColor){
 		board[row][column] = passColor;
-		/*
+		
 		for (int[] arr : board) {
         System.out.println(Arrays.toString(arr)); //PRINTS OUR ARRAY. USED FOR DEBUGGING. Also looks nice in console.
 		}
 		System.out.println("\n");
-		*/
+		
+
 	}
 
 	//Method used to set pieces
