@@ -222,7 +222,7 @@ public class LoginUI extends javax.swing.JFrame {
 		if (tempLog.length() == 5 && tempPass.length() == 5){
 			if (tempLog.matches("^[a-zA-Z0-9]*$") && tempPass.matches("[0-9]+"))
 				client.register(tempLog, tempPass);	
-				
+				confirmationLabel.setText("***REGISTRATION SUCCESSFUL***");
 		}
 		else 
                     confirmationLabel.setText("***INVALID REGISTRATION INFORMATION***");
