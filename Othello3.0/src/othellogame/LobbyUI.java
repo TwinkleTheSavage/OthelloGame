@@ -131,19 +131,17 @@ public class LobbyUI extends javax.swing.JFrame implements ListSelectionListener
     	
     	String msg = "jg";
     	client.handleMessageFromClientUI(msg);
-    	GameUI game = new GameUI();
-    	game.setVisible(true);
+    //	GameUI game = new GameUI();
+    //	game.setVisible(true);
     }
-    
-    //Send string to let server know that player would like to create a game
+  //Send string to let server know that player would like to create a game
     private void createGameButtonActionPerformed(java.awt.event.ActionEvent evt){
     	
     	String msg = "cg";
     	client.handleMessageFromClientUI(msg);
-    	GameUI game = new GameUI();
-    	game.setVisible(true);
+    	//GameUI game = new GameUI();
+    	//game.setVisible(true);
     }
-    
     
     //add element to List arguments (namely each new game created)
     public static void addToList(String game){
