@@ -24,7 +24,7 @@ public class Player {
 	
 	public void startTurn(boolean turn, Color color) {	//sets the first player to be able to set a piece to BLACK. 
 		if(turn = true){
-			game.player1Turn(true);
+			Game.player1Turn(true);
 		}	
 	}
 
