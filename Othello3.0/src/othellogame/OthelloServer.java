@@ -26,6 +26,7 @@ public class OthelloServer extends AbstractServer{
 
 	int gameCount = 0;
 	
+	int [][] board;
 
     //int to compare pw to username
     int playerCount = 0;
@@ -87,12 +88,13 @@ public void handleMessageFromClient(Object msg, ConnectionToClient client){
  System.out.println("Message received: " + msg + " from " + client);
  String[] tokens = new String[3];
  
- if (msg.equals("cg"))
+ if (msg.equals("cg")){
 	 this.createGame();
+ }
  
- else if (msg.equals("jg")){}
-	 //this.joinGame(game);
-	 
+ else if (msg.equals("jg")){
+	 this.joinGame();
+ }
 	  //sending messages to server, "reg" should start this if clause
  else if (((String) msg).startsWith("r")){
 	
@@ -150,16 +152,16 @@ public void createGame(){
 		
 		//create a game named "game1"
 		Game game = new Game();
-		//game.showGameUICreator();
-		//create a GameUI with argument game, which is a Game object 
-		//gameUI = new GameUI(game); 
-		//gameUI.setVisible(true);	
+	
+		Game.setBoardValues();
+		GameUI gameUI = new GameUI(); 
+		gameUI.setVisible(true);	
 		
 		//increment gameCount so we know how many games have been created
 		gameCount++;
 		
 		//add a String to the LobbyUI list
-		LobbyUI.addToList("Game 1");
+		//LobbyUI.addToList("Game 1");
 	//}
 	
 		/*
@@ -178,7 +180,8 @@ public void createGame(){
 
 }
 
-public void joinGame(Game game){
+public void joinGame(){
+	
 	Player player2 = new Player("P2", Color.WHITE);
 	player2.startTurn(false, Color.WHITE);
 	
