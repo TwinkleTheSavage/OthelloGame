@@ -1,9 +1,6 @@
 package othellogame;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import othellogame.OthelloClient;
 
 public class OthelloAccess {
@@ -52,7 +49,7 @@ public class OthelloAccess {
 			port = DEFAULT_PORT;
 		}
 
-		OthelloClient chat= null;
+		/*OthelloClient chat= null;
 		try {
 			chat = new OthelloClient(host, port);
 		} catch (IOException e) {
@@ -61,7 +58,7 @@ public class OthelloAccess {
 					+ " Terminating client.");
 			System.exit(1);
 		}
-
+		 */
 
 		LoginUI log = new LoginUI("localhost", 5555); //THIS SHOULD BE LAUNCHING LoginUI BUT IT'S BROKE, SO WE'RE SKIPPING THAT STEP. FOR NOW.
 		log.setVisible(true);
